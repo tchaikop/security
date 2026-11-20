@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>로그아웃 페이지</h1>
+	<hr>
+	<h1>나간다고???</h1>
+	<hr>
+	<form th:action="@{/logout}" method="post">
+	 <input type="submit" value="로그아웃">
+	
+	</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>첫 대문이야</h2>
+<hr>
+
+
+
+<div sec:authorize="isAnonymous()">
+	<a th:href="@{/login}">로그인으로 이동하기</a><br><br>
+</div>
+
+
+<div sec:authorize="isAuthenticated()">
+
+<a th:href="@{/logout}">로그아웃으로 이동하기</a><br><br>
+</div>
+
+<!-- 관리자 페이지 -->
+
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		<a th:href="@{/admin}">관리자 메뉴(관리자마 보임)</a>
+	
+	
+	</div>
+	
+	<div sec:authorize="hasRole('USER')">
+		<a th:href="@{/userinfo}">회원정보(일반 유저용)</a>
+	
+	
+	</div>
+	
+
+
+<h2>안녕</h2>
+</body>
+</html>
