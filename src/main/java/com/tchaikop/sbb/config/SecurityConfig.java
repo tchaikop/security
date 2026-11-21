@@ -25,11 +25,14 @@ public class SecurityConfig {
 			.authorizeHttpRequests(auth -> auth  //권한부여
 				//	.anyRequest().permitAll() //누구나 모든 페이지에 접근가능
 					
-				//로그인 페이지나 호원가입 페이지 처럼 누구나 봐야할 페이지만 접근가능하게 설정
+				//로그인 페이지나 회원가입 페이지 처럼 누구나 봐야할 페이지만 접근가능하게 설정
 				.requestMatchers(
 						"/",
 						"/login",
 						"/signup",
+						"/user/**",
+						"/error",
+						"/favicon.ico",
 						"/css/**",
 						"/img/**",
 						"/js/**"
@@ -44,6 +47,8 @@ public class SecurityConfig {
 				.anyRequest().authenticated()
 				
 		)
+			//로그인 전 차단된 /error?continue 경로로 튀는 현상 방지
+		.requestCache(cache -> cache.disable())
 			//로그인 설정
 		.formLogin(login -> login
 				.loginPage("/user/login")   //로그인 페이지(로그인 요청 )등록
